@@ -11,14 +11,13 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
 
-  resources :users do 
-    resources :runs, only: [:index]
-  end 
+
 
   resources :runs do 
     resources :reviews, only: [:new, :edit, :index, :show]
   end 
   resources :reviews
+  #gem or api, 3rd party login, bootstrap, submit a photo review a run, nested form run&review at same time
   
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
