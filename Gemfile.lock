@@ -212,6 +212,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  autoprefixer-rails
   awesome_print
   bcrypt
   bootsnap (>= 1.4.2)
