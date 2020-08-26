@@ -20,4 +20,10 @@ class ReviewsController < ApplicationController
 
     def destroy
     end
+
+    private
+
+    def review_params
+        params.require(:review).permit(:run_id, :user_id, :title, :review_race_name, :description, :rating)
+    end 
 end
