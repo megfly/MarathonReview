@@ -1,21 +1,20 @@
 class UsersController < ApplicationController
 
-    def index 
-    end 
-
     def show
+        @user = User.find_by_id(params[:id])
     end 
 
     def new
+        @user = User.new 
     end 
 
     def create
         @user = User.create(user_params)
         if @user.save 
             session[:user_id] = @user.id 
-            redirect_to '/'
+            redirect_to user_path(@user) #user show page 
         else 
-            redirect_to '/users/new'
+            redirect_to '/signup'
         end 
     end 
 
