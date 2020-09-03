@@ -30,7 +30,7 @@ class SessionsController < ApplicationController
     end 
 
     def omniauth
-        @user = User.from_omniauth(request.env['omniauth.auth'])
+        @user = User.from_omniauth(request.env["omniauth.auth"])
      binding.pry 
     end 
 
@@ -41,7 +41,7 @@ class SessionsController < ApplicationController
 
     private 
 
-    def auth 
+    def auth
         request.env['omniauth.auth']
     end
 end 
