@@ -3,7 +3,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.1'
 
-gem 'dotenv-rails'
+gem 'dotenv-rails', :groups => [:development, :test]
 gem 'bcrypt'
 gem 'pry'
 gem 'awesome_print'
