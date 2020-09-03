@@ -11,7 +11,8 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
 
-
+  #fb omniauth logging in
+  get '/auth/facebook/callback' => 'sessions#create'
 
   resources :runs do 
     resources :reviews, only: [:new, :edit, :index, :show]
