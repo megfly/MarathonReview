@@ -1,10 +1,18 @@
 <nav class="navbar navbar-default" role="navigation">
   <div class="container">
     <div class="navbar-header">
-      <a class="navbar-brand" href="/">Home</a>
+
+    <% if !user_signed_in? %>
       <a class="navbar-brand" href="/signup">Signup</a>
       <a class="navbar-brand" href="/login">Login</a>
-      <a class="navbar-brand" <%= link_to "Logout", logout_path, method: :delete %> </a>
+    <% end %>
+       
+      <% if user_signed_in? %>
+        <a class="navbar-brand" <%= link_to "All Marathons", runs_path %></a>
+        <a class="navbar-brand" <%= link_to "All Reviews", reviews_path %></a>
+        <a class="navbar-brand" <%= link_to "Logout", logout_path, method: :delete %></a>
+      <% end %>
+
     </div>
   </div>
 </nav>
