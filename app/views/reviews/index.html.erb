@@ -1,0 +1,9 @@
+All Marathon Reviews
+<br>
+<br>
+<% @reviews.highest_rating.each do |rev| %>
+    <%= link_to rev.review_race_name(rev.run_id, rev) %>
+    <%= rev.title %>
+    <%= rev.description %>
+    <%= rev.rating %>
+<% end %>

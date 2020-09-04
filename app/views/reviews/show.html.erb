@@ -1,0 +1,9 @@
+<%= "Name of Marathon:" %><%= @review.review_race_name %><br>
+<%= "Review Title:" %><%= @review.title %><br>
+<%= "Review Content:" %><%= @review.description %><br>
+<%= "Marathon Rating:" %><%= @review.rating %>
+
+<% if current_user.id == @review.user_id %>
+    <%= link_to "Edit Review", edit_run_review_path(@run, @review) %>
+    <%= link_to "Delete Review", run_review_path(@run, @review), method: :delete %>
+<% end %>
