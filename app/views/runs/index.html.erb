@@ -1,5 +1,6 @@
 <h3> All Races! </h3>
 
 <% @runs.each do |run| %>
-    <div><%= link_to run.run_race_name, run_path(run) %></div>
+    <div><%= link_to run.run_race_name, run_path(run) %> </div>
+    <div><%= run.location_city %>, <%= run.location_state %>
 <% end %>
