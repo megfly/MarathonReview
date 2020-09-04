@@ -1,6 +1,6 @@
 class ReviewsController < ApplicationController
-    before_action :set_run_id, only: [:show, :edit]
-    before_action :find_review, only: [:show, :edit, :update, :destroy]
+    before_action :set_run_id, only: [:show, :create, :edit]
+    before_action :find_review, only: [:show, :create, :edit, :update, :destroy]
 
     def index 
     end 
