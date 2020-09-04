@@ -13,9 +13,9 @@ class RunsController < ApplicationController
     end 
 
     def create
-        @run = Run.build(run_params)
+        @run = Run.new(run_params)
         if @run.save 
-            redirect_to run_path 
+            redirect_to run_path(@run)
         else 
             render :new 
         end 
@@ -38,6 +38,6 @@ class RunsController < ApplicationController
     private
 
     def run_params
-        params.require(:run).permit(:terrain, :location_city, :location_state, :month)
+        params.require(:run).permit(:run_race_name, :terrain, :location_city, :location_state, :month)
     end 
 end
