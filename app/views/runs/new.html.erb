@@ -1,22 +1,21 @@
 <h3> New Race Form </h3>
 
 <%= form_for(@run) do |f| %>
-    <%= f.label :run_race_name %>
+    <label> Marathon Name: </label>
     <%= f.text_field :run_race_name %><br>
 
-    <%= f.label :terrain %>
+    <label> Marathon Terrain: </label>
     <%= f.text_field :terrain %><br>
 
-    <%= f.label :location_city %>
+    <label> Marathon City: </label>
     <%= f.text_field :location_city %><br>
 
-    <%= f.label :location_state %>
+    <label>Marathon State: </label>
     <%= f.text_field :location_state %><br>
 
-    <%= f.label :month %>
+    <label>Month of Race: </label>
     <%= f.text_field :month %><br><br>
 
     <%= f.submit %>
 <% end %>
 <br><br>
-#would like to do collection select for terrain
