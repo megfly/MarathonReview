@@ -3,6 +3,7 @@ class ReviewsController < ApplicationController
     before_action :find_review, only: [:show, :create, :edit, :update, :destroy]
 
     def index 
+        @reviews = Review.all
     end 
 
     def show
@@ -10,12 +11,15 @@ class ReviewsController < ApplicationController
 
     def new
         #nested new route has access to run_id
+        params[:run_id] && @run = Run.find_by_id(params[:run_id])
         @run = Run.find_by_id(params[:run_id])
         @review = @run.reviews.build
     end 
 
     def create
-        @review = @run.reviews.build(review_params)
+        @review = current_user.reviews.build(review_params)
+        @review.user_id = current_user.id 
+        @review.run_id = params[:run_id]
         if @review.save 
             redirect_to run_review_path(@review.run_id, @review)
         else 
@@ -27,6 +31,11 @@ class ReviewsController < ApplicationController
     end
 
     def update 
+        if @review.update(review_params)
+            redirect_to run_review_path(@review.run_id, @review)
+        else
+            redirect_to '/'
+        end
     end 
 
     def destroy
