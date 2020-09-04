@@ -15,7 +15,8 @@ class RunsController < ApplicationController
     end 
 
     def create
-        @run = Run.new(run_params)
+        @run = current_user.runs.build(run_params)
+        @run.user_id = current_user.id 
         if @run.save 
             redirect_to run_path(@run)
         else 
