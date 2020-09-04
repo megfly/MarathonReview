@@ -1,4 +1,6 @@
 class ReviewsController < ApplicationController
+    before_action :set_run_id, only: [:show, :edit]
+    before_action :find_review, only: [:show, :edit, :update, :destroy]
 
     def index 
     end 
@@ -7,9 +9,18 @@ class ReviewsController < ApplicationController
     end 
 
     def new
+        #nested new route has access to run_id
+        @run = Run.find_by_id(params[:run_id])
+        @review = @run.reviews.build
     end 
 
     def create
+        @review = @run.reviews.build(review_params)
+        if @review.save 
+            redirect_to run_review_path(@review.run_id, @review)
+        else 
+            render :new
+        end 
     end 
 
     def edit 
@@ -25,5 +36,13 @@ class ReviewsController < ApplicationController
 
     def review_params
         params.require(:review).permit(:run_id, :user_id, :title, :review_race_name, :description, :rating)
+    end 
+
+    def set_run_id 
+        @run = Run.find_by_id(params[:run_id])
+    end 
+
+    def find_review 
+        @review = Review.find_by_id(params[:id])
     end 
 end
