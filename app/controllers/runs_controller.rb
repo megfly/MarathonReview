@@ -1,5 +1,7 @@
 class RunsController < ApplicationController
-
+    before_action :redirect_if_not_logged_in
+    before_action :set_run, only: [:show, :edit, :update, :destroy]
+    
     def index 
         @runs = Run.all
     end 
@@ -39,5 +41,9 @@ class RunsController < ApplicationController
 
     def run_params
         params.require(:run).permit(:run_race_name, :terrain, :location_city, :location_state, :month)
+    end 
+
+    def set_run
+        @run = Run.find_by_id(params[:id])
     end 
 end

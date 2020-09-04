@@ -6,6 +6,11 @@ class ApplicationController < ActionController::Base
     def welcome
     end 
 
+    def redirect_if_not_logged_in
+        if !user_signed_in?
+            redirect_to '/'
+    end
+
     def current_user 
         @current_user ||= User.find_by(id: session[:user_id])
     end 
