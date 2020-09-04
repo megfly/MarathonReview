@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   get '/auth/facebook/callback', to: 'sessions#omniauth'
 
   resources :runs do 
-    resources :reviews, only: [:new, :edit, :index, :show]
+    resources :reviews, only: [:new, :create, :edit, :index, :show]
   end 
   resources :reviews
 
