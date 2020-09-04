@@ -9,6 +9,7 @@ class ApplicationController < ActionController::Base
     def redirect_if_not_logged_in
         if !user_signed_in?
             redirect_to '/'
+        end 
     end
 
     def current_user 
