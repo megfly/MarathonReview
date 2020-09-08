@@ -13,6 +13,7 @@ class SessionsController < ApplicationController
     end 
 
     def create
+    
     @user = User.find_by(email: params[:user][:email]) #params from login form
 
     if @user && @user.authenticate(params[:user][:password])
@@ -24,6 +25,8 @@ class SessionsController < ApplicationController
         redirect_to '/login'
       end 
     end 
+    #request.env
+    #request.env['omniauth.auth']
 
     def edit 
     end
