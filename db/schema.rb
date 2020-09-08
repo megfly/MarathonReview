@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_03_203330) do
+ActiveRecord::Schema.define(version: 2020_09_08_135757) do
 
   create_table "reviews", force: :cascade do |t|
     t.integer "run_id"
@@ -43,6 +43,7 @@ ActiveRecord::Schema.define(version: 2020_09_03_203330) do
     t.string "name"
     t.string "image"
     t.string "uid"
+    t.string "provider"
   end
 
 end
