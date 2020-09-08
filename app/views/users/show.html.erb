@@ -1,7 +1,22 @@
+<br>
+<div><%= flash[:error] %></div>
+
+<h3> Welcome <%= @user.email %>! </h3> 
+
 <br><br>
 
-<%= flash[:error] %>
+<h4>Your Marathons:</h4>
+<% @user.runs.each do |run| %>
+    <div><%= link_to run.run_race_name, run_path(run) %> </div>
+<% end %>
 
-<h1> Welcome <%= @user.email %>! </h1> 
+<br>
+<br>
 
+<h4>Your Reviews: </h4>
+<% @user.reviews.each do |r| %>
+    <div><%= link_to r.review_race_name, run_review_path(r.run_id, r) %> <br></div>
+    <%= r.title %><br>
+    Rating: <%= r.rating %>
+<% end %>
 <br><br>
