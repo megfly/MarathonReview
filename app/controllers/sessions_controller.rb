@@ -13,15 +13,28 @@ class SessionsController < ApplicationController
     end 
 
     def create
-        @user = User.find_by(email: params[:user][:email]) #params from login form
+        if request.env[‘omniauth.auth’]
+          user = User.create_with_omniauth(request.env[‘omniauth.auth’])
+          session[:user_id] = user.id    
+          redirect_to user_path(user.id)
+        else
+          user = User.find_by_email(params[:email])
+          user && user.authenticate(params[:password])
+          session[:user_id] = user.id
+          redirect_to user_path(user.id)
+        end
+      end
 
-        if @user && @user.authenticate(params[:user][:password])
-            session[:user_id] = @user.id #save the user id inside browser cookies and login
-            redirect_to user_path(@user)
-        else 
-            redirect_to '/login'
-        end 
-    end 
+    # def create
+    #     @user = User.find_by(email: params[:user][:email]) #params from login form
+
+    #     if @user && @user.authenticate(params[:user][:password])
+    #         session[:user_id] = @user.id #save the user id inside browser cookies and login
+    #         redirect_to user_path(@user)
+    #     else 
+    #         redirect_to '/login'
+    #     end 
+    # end 
 
     def edit 
     end
