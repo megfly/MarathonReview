@@ -1,13 +1,14 @@
 class RunsController < ApplicationController
     before_action :redirect_if_not_logged_in
     before_action :set_run, only: [:show, :edit, :update, :destroy]
+    before_action :correct_user, only: [:edit, :update, :destroy]
     
     def index 
         @runs = Run.all
     end 
 
     def show
-        @run = Run.find(params[:id])
+        
     end 
 
     def new
@@ -25,17 +26,16 @@ class RunsController < ApplicationController
     end 
 
     def edit 
-        @run = Run.find(params[:id])
+        
     end
 
     def update 
-        @run = Run.find(params[:id])
         @run.update(run_params)
         redirect_to run_path 
     end 
 
     def destroy
-        @run = Run.find(params[:id])
+       
     end
 
     private
@@ -47,4 +47,12 @@ class RunsController < ApplicationController
     def set_run
         @run = Run.find_by_id(params[:id])
     end 
+
+    def correct_user 
+        @run = Run.find_by_id(params[:id])
+        unless current_user?(@run.user) #unless is the opposite of if, if current user is not the user
+            flash[:notice] = "This isn't your race to edit. Users can only edit their own races"
+        end 
+    end 
+
 end
