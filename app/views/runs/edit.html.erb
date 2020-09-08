@@ -2,6 +2,8 @@
 
 <h3> Edit Race Form </h3>
 
+<%= flash[:notice] %>
+
 <%= form_for(@run) do |f| %>
     <%= f.label :run_race_name %>
     <%= f.text_field :run_race_name %><br>
