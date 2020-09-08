@@ -12,8 +12,8 @@ Rails.application.routes.draw do
   delete '/logout', to: 'sessions#destroy'
 
   #fb omniauth logging in
-  get '/auth/facebook', as: 'facebook_login'
-  get '/auth/facebook/callback', to: 'sessions#omniauth'
+  get ‘auth/facebook/callback’, to: ‘sessions#create’
+  get ‘auth/failure’, to: redirect(‘/’)
 
   resources :runs do 
     resources :reviews, only: [:new, :create, :edit, :index, :show]
