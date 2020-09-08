@@ -1,9 +1,8 @@
-All Marathon Reviews
-<br>
-<br>
-<% @reviews.highest_rating.each do |rev| %>
-    <%= link_to rev.review_race_name(rev.run_id, rev) %>
-    <%= rev.title %>
-    <%= rev.description %>
-    <%= rev.rating %>
+<h2>All Reviews</h2>
+<% @reviews.highest_rating.each do |r| %>
+    <%= link_to r.title, run_review_path(r.run_id, r) %> <br>
+    Marathon: <%= r.review_race_name %><br>
+    Content: <%= r.description %><br>
+    By: <%= r.user.email %><br>
+    Rating: <%= r.rating %><br><br>
 <% end %>
