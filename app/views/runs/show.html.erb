@@ -7,7 +7,7 @@
 <div> Race State: <%= @run.location_state %><div>
 <div> Race Month: <%= @run.month %><div>
 
-<% if current_user.id == @run.user_id %>
+<% if current_user == @run.user %>
 <%= link_to "Edit Marathon", edit_run_path(@run) %> |
 <%= link_to "Delete Marathon", run_path, method: :delete %>
 <% end %>
