@@ -19,7 +19,7 @@
 <br>
 <br>
 <br>
-<% if current_user %>
+<% if current_user == @run.user %>
 <%= link_to "Edit Marathon", edit_run_path(@run) %> |
 <%= link_to "Delete Marathon", run_path, method: :delete %>
 <% end %>
