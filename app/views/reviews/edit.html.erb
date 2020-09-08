@@ -1,3 +1,4 @@
+<%= render partial: "layouts/errors", locals: {object: @run, @review} %>
 <%= form_for [@run, @review] do |f| %>
     <br>
     <label> Review Title: </label>
