@@ -25,7 +25,7 @@ class RunsController < ApplicationController
     end 
 
     def edit 
-        
+        #how do make it so only the current user can edit and update
     end
 
     def update 
@@ -34,7 +34,7 @@ class RunsController < ApplicationController
     end 
 
     def destroy
-       
+       #delete isnt working
     end
 
     private
