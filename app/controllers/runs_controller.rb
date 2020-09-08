@@ -26,6 +26,7 @@ class RunsController < ApplicationController
 
     def edit 
         #how do make it so only the current user can edit and update
+        #look at project(sinatra and lessons)
     end
 
     def update 
@@ -40,7 +41,7 @@ class RunsController < ApplicationController
     private
 
     def run_params
-        params.require(:run).permit(:run_race_name, :terrain, :location_city, :location_state, :month)
+        params.require(:run).permit(:run_race_name, :terrain, :location_city, :location_state, :month, :user_id)
     end 
 
     def set_run
