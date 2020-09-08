@@ -13,28 +13,15 @@ class SessionsController < ApplicationController
     end 
 
     def create
-        if request.env[‘omniauth.auth’]
-          user = User.create_with_omniauth(request.env[‘omniauth.auth’])
-          session[:user_id] = user.id    
-          redirect_to user_path(user.id)
-        else
-          user = User.find_by_email(params[:email])
-          user && user.authenticate(params[:password])
-          session[:user_id] = user.id
-          redirect_to user_path(user.id)
-        end
-      end
+    @user = User.find_by(email: params[:user][:email]) #params from login form
 
-    # def create
-    #     @user = User.find_by(email: params[:user][:email]) #params from login form
-
-    #     if @user && @user.authenticate(params[:user][:password])
-    #         session[:user_id] = @user.id #save the user id inside browser cookies and login
-    #         redirect_to user_path(@user)
-    #     else 
-    #         redirect_to '/login'
-    #     end 
-    # end 
+    if @user && @user.authenticate(params[:user][:password])
+        session[:user_id] = @user.id #save the user id inside browser cookies and login
+        redirect_to user_path(@user)
+    else 
+        redirect_to '/login'
+      end 
+    end 
 
     def edit 
     end
@@ -42,16 +29,16 @@ class SessionsController < ApplicationController
     def update 
     end 
 
-    def omniauth
-        @user = User.find_or_create_by(uid: auth['uid']) do |u|
-            u.name = auth['info']['name']
-            u.email = auth['info']['email']
-            u.image = auth['info']['image']
-          end
+    # def omniauth
+    #     @user = User.find_or_create_by(uid: auth['uid']) do |u|
+    #         u.name = auth['info']['name']
+    #         u.email = auth['info']['email']
+    #         u.image = auth['info']['image']
+    #       end
        
-          session[:user_id] = @user.id
-          redirect_to root_path
-    end 
+    #       session[:user_id] = @user.id
+    #       redirect_to root_path
+    # end 
 
     def destroy
         session.clear 
