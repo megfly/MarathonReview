@@ -5,11 +5,3 @@
 <h1> Welcome <%= @user.email %>! </h1> 
 
 <br><br>
-
-<!-- Flash Messages -->
-
-<% flash.each do |key, value| %>
-    <div class="<%= flash_class(key) %>">
-          <%= value %>
-    </div>
-<% end %>
