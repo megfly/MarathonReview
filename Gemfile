@@ -11,6 +11,7 @@ gem 'bootstrap', '~> 5.0.0.alpha1'
 gem 'autoprefixer-rails'
 gem 'omniauth'
 gem 'omniauth-facebook'
+gem 'figaro'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.3', '>= 6.0.3.2'
