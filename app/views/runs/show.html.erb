@@ -1,6 +1,6 @@
 <%= render partial: "layouts/errors", locals: {object: @run} %>
 <br>
-<h3> Race Show Page! </h3>
+<h3> Marathon Page </h3>
 <br>
 <div> Race Name: <%= @run.run_race_name %><div>
 <div> Race Terrain: <%= @run.terrain %><div>
@@ -15,10 +15,8 @@
 <% @run.reviews.each do |review| %>
     <%= link_to "#{review.review_race_name}", run_review_path(@run, review) %><br>
     Rated <%= "#{review.rating}" %><br>
-    by: <%= review.user.email %>
+    by: <%= review.user.email %><br><br>
 <% end %>
-<br>
-<br>
 <br>
 <% if current_user == @run.user %>
 <%= link_to "Edit Marathon", edit_run_path(@run) %> |
