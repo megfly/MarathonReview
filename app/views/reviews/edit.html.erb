@@ -1,3 +1,3 @@
-<%= render partial: "layouts/errors", locals: {object: @run, @review} %>
+<%= render partial: "layouts/errors", locals: {object: @review} %>
 <br>
-<%= render 'review' %>
+<%= render partial: "review", locals: {review: @review} %>
