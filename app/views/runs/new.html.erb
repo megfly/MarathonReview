@@ -2,22 +2,4 @@
 
 <h3> New Race Form </h3>
 
-<%= form_for(@run) do |f| %>
-    <label> Marathon Name: </label>
-    <%= f.text_field :run_race_name %><br>
-
-    <label> Marathon Terrain: </label>
-    <%= f.text_field :terrain %><br>
-
-    <label> Marathon City: </label>
-    <%= f.text_field :location_city %><br>
-
-    <label>Marathon State: </label>
-    <%= f.text_field :location_state %><br>
-
-    <label>Month of Race: </label>
-    <%= f.text_field :month %><br><br>
-
-    <%= f.submit %>
-<% end %>
-<br><br>
+<%= render 'run' %>

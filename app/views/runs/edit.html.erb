@@ -4,21 +4,4 @@
 
 <%= flash[:notice] %>
 
-<%= form_for(@run) do |f| %>
-    <%= f.label :run_race_name %>
-    <%= f.text_field :run_race_name %><br>
-
-    <%= f.label :terrain %>
-    <%= f.text_field :terrain %><br>
-
-    <%= f.label :location_city %>
-    <%= f.text_field :location_city %><br>
-
-    <%= f.label :location_state %>
-    <%= f.text_field :location_state %><br>
-
-    <%= f.label :month %>
-    <%= f.text_field :month %><br>
-
-    <%= f.submit %>
-<% end %>
+<%= render 'run' %>
