@@ -13,10 +13,9 @@ Rails.application.routes.draw do
 
   #fb omniauth logging in
   get '/auth/facebook/callback' => 'sessions#omniauth'
-  # get ‘/auth/failure’, to: redirect(‘/’)
 
   resources :runs do 
-    resources :reviews, only: [:new, :create, :edit, :index, :show]
+    resources :reviews
   end 
   resources :reviews
 
