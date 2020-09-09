@@ -8,6 +8,7 @@
     <% end %>
        
       <% if user_signed_in? %>
+        <a class="navbar-brand" <%= link_to "Home", user_path(current_user) %></a>
         <a class="navbar-brand" <%= link_to "All Marathons", runs_path %></a>
         <a class="navbar-brand" <%= link_to "Add a Marathon", new_run_path %></a>
         <a class="navbar-brand" <%= link_to "All Reviews", reviews_path %></a>
