@@ -3,5 +3,6 @@
 <% @runs.each do |run| %>
     <div><%= link_to run.run_race_name, run_path(run) %> </div>
     <div><%= run.location_city %>, <%= run.location_state %></div>
+    <div>by: <%= run.user.email %></div><br>
 <% end %>
 </ul>
