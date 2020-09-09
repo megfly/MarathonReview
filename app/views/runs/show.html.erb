@@ -7,6 +7,7 @@
 <div> Race City: <%= @run.location_city %><div>
 <div> Race State: <%= @run.location_state %><div>
 <div> Race Month: <%= @run.month %><div>
+<div> by: <%= @run.user.email %>
 <br>
 <br>
 <br>
@@ -21,7 +22,7 @@
 <br>
 <% if current_user == @run.user %>
 <%= link_to "Edit Marathon", edit_run_path(@run) %> |
-<%= link_to "Delete Marathon", run_path, method: :delete %>
+<%= link_to "Delete Marathon", run_path(@run), method: :delete %>
 <% end %>
 <br><br>
 <%= link_to "Add a Review for #{@run.run_race_name}", new_run_review_path(@run) %>
