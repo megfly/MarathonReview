@@ -1,4 +1,5 @@
 class RunsController < ApplicationController
+    #before_action :current_user, only: [:index]
     before_action :redirect_if_not_logged_in
     before_action :set_run, only: [:show, :edit, :update, :destroy]
     
@@ -11,12 +12,13 @@ class RunsController < ApplicationController
     end 
 
     def new
-        @run = Run.new 
+        params[:user_id] && @user = User.find_by_id(params[:user_id])
+        @run = Run.new
     end 
 
     def create
         @run = current_user.runs.build(run_params)
-
+        @run.user_id = current_user.id 
         if @run.save 
             redirect_to run_path(@run)
         else 
