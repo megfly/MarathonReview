@@ -1,4 +1,5 @@
 class ReviewsController < ApplicationController
+    before_action :redirect_if_not_logged_in
     before_action :set_run_id, only: [:show, :create, :edit, :destroy]
     before_action :find_review, only: [:show, :create, :edit, :update, :destroy]
 
