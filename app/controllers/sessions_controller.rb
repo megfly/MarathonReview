@@ -13,18 +13,29 @@ class SessionsController < ApplicationController
     end 
 
     def create
-    
-    @user = User.find_by(email: params[:user][:email]) #params from login form
-
-    if @user && @user.authenticate(params[:user][:password])
-        session[:user_id] = @user.id #save the user id inside browser cookies and login
-        flash[:error] = "Login successful!"
-        redirect_to user_path(@user)
-    else 
-        flash[:error] = "Please try again!"
-        redirect_to '/login'
-      end 
+        if @user = User.find_or_create_by(uid: auth['uid']) do |u|
+            u.name = auth['info']['name']
+            u.email = auth['info']['email']
+            u.image = auth['info']['image']
+                if @user.save 
+                    session[:user_id] = @user.id 
+                    redirect_to user_path(@user)
+        else 
+            @user = User.find_by(email: params[:user][:email]) #params from login form 
+ 
+                if @user && @user.authenticate(params[:user][:password])
+                    session[:user_id] = @user.id #save the user id inside browser cookies and login
+                    flash[:error] = "Login successful!"
+                    redirect_to user_path(@user)
+                else 
+                    flash[:error] = "Please try again!"
+                    redirect_to '/login'
+                end 
+            end 
+            end 
+        end
     end 
+
     #request.env
     #request.env['omniauth.auth']
 
@@ -33,17 +44,6 @@ class SessionsController < ApplicationController
 
     def update 
     end 
-
-    # def omniauth
-    #     @user = User.find_or_create_by(uid: auth['uid']) do |u|
-    #         u.name = auth['info']['name']
-    #         u.email = auth['info']['email']
-    #         u.image = auth['info']['image']
-    #       end
-       
-    #       session[:user_id] = @user.id
-    #       redirect_to root_path
-    # end 
 
     def destroy
         session.clear 
