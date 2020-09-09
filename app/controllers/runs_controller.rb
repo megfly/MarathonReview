@@ -27,8 +27,7 @@ class RunsController < ApplicationController
     end 
 
     def edit 
-        #how do make it so only the current user can edit and update
-        #look at project(sinatra and lessons)
+    
     end
 
     def update 
@@ -37,7 +36,8 @@ class RunsController < ApplicationController
     end 
 
     def destroy
-       #delete isnt working
+       @run.destroy
+       redirect_to '/'
     end
 
     private
