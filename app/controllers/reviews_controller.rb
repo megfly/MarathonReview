@@ -1,5 +1,5 @@
 class ReviewsController < ApplicationController
-    before_action :set_run_id, only: [:show, :create, :edit]
+    before_action :set_run_id, only: [:show, :create, :edit, :destroy]
     before_action :find_review, only: [:show, :create, :edit, :update, :destroy]
 
     def index 
@@ -39,6 +39,8 @@ class ReviewsController < ApplicationController
     end 
 
     def destroy
+        @review.destroy
+        redirect_to '/'
     end
 
     private
