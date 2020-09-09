@@ -1,5 +1,4 @@
 class RunsController < ApplicationController
-    #before_action :current_user, only: [:index]
     before_action :redirect_if_not_logged_in
     before_action :set_run, only: [:show, :edit, :update, :destroy]
     
@@ -8,7 +7,6 @@ class RunsController < ApplicationController
     end 
 
     def show
-        
     end 
 
     def new
@@ -36,8 +34,9 @@ class RunsController < ApplicationController
     end 
 
     def destroy
-       @run.destroy
-       redirect_to '/'
+        @user = current_user
+        @run.destroy
+        redirect_to user_path(@user)
     end
 
     private
