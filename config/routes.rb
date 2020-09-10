@@ -20,7 +20,9 @@ Rails.application.routes.draw do
   resources :reviews
 
   resources :users 
+  
   #gem or api, submit a photo review a run, nested form run&review at same time
+  #would like to collection select for terrain, and also put limit on rating numbers
   
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
