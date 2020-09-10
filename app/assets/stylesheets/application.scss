@@ -16,3 +16,41 @@
  // Custom bootstrap variables must be set or imported *before* bootstrap.
 
 @import "bootstrap";
+
+body {
+    background-color: lightsteelblue;
+}
+
+h3 { 
+    text-shadow: 1px 1px 1px #ccc;
+}
+
+h4 {
+    text-shadow: 1px 1px 1px #ccc;
+}
+
+.text-left {
+    text-align: left;
+  }
+  
+  .text-right {
+    text-align: right;
+  }
+  
+  .text-center {
+    text-align: center;
+  }
+
+/* navbar */
+.navbar-default {
+    background-color: #F8F8F8;
+    border-color: #E7E7E7;
+}
+/* Title */
+.navbar-default .navbar-brand {
+    color: #777;
+}
+.navbar-default .navbar-brand:hover,
+.navbar-default .navbar-brand:focus {
+    color: #5E5E5E;
+}

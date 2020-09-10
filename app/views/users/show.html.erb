@@ -1,12 +1,14 @@
-<h3> Welcome <%= @user.email %>! </h3> 
-
-<br><br>
-
-<h5>Your Reviews: </h5>
+<br>
+<h3 class="text-center"> Welcome <%= @user.email %>! </h3> 
+<br>
+<h3 class="text-center">Your Reviews: </h3>
+<div>
+<h5 class="text-center">
 <% @user.reviews.each do |r| %>
     <div><%= link_to r.review_race_name, run_review_path(r.run_id, r) %> <br></div>
     <%= r.title %><br>
     Rating: <%= r.rating %><br>
     by: <%= r.user.email %><br>
 <% end %>
+</h5>
 <br><br>

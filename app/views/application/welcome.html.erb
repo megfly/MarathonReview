@@ -1,8 +1,16 @@
-<html>
-<body>
-<h3> Welcome! </h3> 
-
-  <%= link_to('Log in with Facebook!', '/auth/facebook') %>
-
-</body>
-</html>
+<br>
+<br>
+<br>
+<h3 class="text-center"> Welcome to Marathon Reviews! </h3> 
+<br>
+<h5 class="text-center">
+<button type="button", class="btn btn-outline-primary btn-lg">
+<%= link_to('Login with Facebook', '/auth/facebook') %>
+</button>
+<button type="button", class="btn btn-outline-primary btn-lg">
+<a href="/signup">Signup with Email</a>
+</button>
+<button type="button", class="btn btn-outline-primary btn-lg">
+<a href="/login">Login with Email</a>
+</button>
+</h5>
