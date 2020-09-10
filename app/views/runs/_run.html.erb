@@ -1,40 +1,42 @@
 <%= form_for(@run, html: {class: 'form-horizontal'}) do |f| %>
+
     <div class="field form-group">
         <%= f.label :run_race_name, "Marathon Name: ", class: 'col-sm-2 control-label' %>
-        <div class="col-sm-10">
-            <%= f.text_field :run_race_name, class: 'form-control' %><br>
+        <div class="col-sm-6">
+            <%= f.text_field :run_race_name, class: 'form-control' %>
         </div>
     </div>
+
     <div class="field form-group">
         <%= f.label :terrain, "Marathon Terrain: ", class: 'col-sm-2 control-label' %>
-        <div class="col-sm-10">
+        <div class="col-sm-6">
             <%= f.text_field :terrain, class: 'form-control' %>
         </div>
     </div>
 
     <div class="field form-group">
         <%= f.label :location_city, "Marathon City: ", class: 'col-sm-2 control-label' %>
-        <div class="col-sm-10">
+        <div class="col-sm-6">
             <%= f.text_field :location_city, class: 'form-control' %>
         </div>
     </div>
 
     <div class="field form-group">
         <%= f.label :location_state, "Marathon State: ", class: 'col-sm-2 control-label' %>
-        <div class="col-sm-10">
+        <div class="col-sm-6">
             <%= f.text_field :location_state, class: 'form-control' %>
         </div>
     </div>
 
     <div class="field form-group">
         <%= f.label :month, "Month of Marathon: ", class: 'col-sm-2 control-label' %>
-        <div class="col-sm-10">
+        <div class="col-sm-6">
             <%= f.text_field :month, class: 'form-control' %><br>
         </div>
     </div>
 
     <div class="actions form-group">
-        <div class="col-sm-offset-2 col-sm-10">
+        <div class="col-sm-offset-2 col-sm-6">
             <%= f.submit %>
         </div
     </div>

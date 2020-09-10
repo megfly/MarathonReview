@@ -1,26 +1,35 @@
 <%= render partial: "layouts/errors", locals: {object: @run} %>
-<br>
-<h3> Marathon Page </h3>
-<br>
-<div> Race Name: <%= @run.run_race_name %><div>
-<div> Race Terrain: <%= @run.terrain %><div>
-<div> Race City: <%= @run.location_city %><div>
-<div> Race State: <%= @run.location_state %><div>
-<div> Race Month: <%= @run.month %><div>
-<div> by: <%= @run.user.email %>
-<br>
-<br>
-<br>
-<%= "#{@run.run_race_name} Reviews:" %><br>
+    <br>
+<h3 class="text-center">
+    <div> <%= @run.run_race_name %><div></h3>
+<h5 class="text-center">
+    <div> Race Terrain: <%= @run.terrain %><div>
+    <div> Race City: <%= @run.location_city %><div>
+    <div> Race State: <%= @run.location_state %><div>
+    <div> Race Month: <%= @run.month %><div>
+    <div> by: <%= @run.user.email %>
+</h5>
+    <br>
+<h4 class="text-center"> Marathon Reviews: </h4>
+    <div>
+<h5 class="text-center">
 <% @run.reviews.each do |review| %>
-    <%= link_to "#{review.review_race_name}", run_review_path(@run, review) %><br>
-    Rated <%= "#{review.rating}" %><br>
-    by: <%= review.user.email %><br><br>
+    <%= link_to "#{review.review_race_name}", run_review_path(@run, review) %><div>
+    Rated <%= "#{review.rating}" %><div>
+    by: <%= review.user.email %><div>
+<% end %>
+    <br>
+<% if current_user == @run.user %>
+    <button type="button" class="btn btn-outline-primary">
+        <%= link_to "Edit Marathon", edit_run_path(@run) %>
+    </button>
+    <button type="button" class="btn btn-outline-primary">
+        <%= link_to "Delete Marathon", run_path(@run), method: :delete %>
+    </button
 <% end %>
 <br>
-<% if current_user == @run.user %>
-<%= link_to "Edit Marathon", edit_run_path(@run) %> |
-<%= link_to "Delete Marathon", run_path(@run), method: :delete %>
-<% end %>
 <br><br>
-<%= link_to "Add a Review for #{@run.run_race_name}", new_run_review_path(@run) %>
+<button type="button" class="btn btn-outline-primary">
+    <%= link_to "Add a Review for #{@run.run_race_name}", new_run_review_path(@run) %>
+</button>
+</h5>
