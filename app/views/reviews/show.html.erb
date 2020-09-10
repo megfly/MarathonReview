@@ -1,9 +1,19 @@
-<%= "Name of Marathon: " %><%= @review.review_race_name %><br>
-<%= "Review Title: " %><%= @review.title %><br>
-<%= "Review Content: " %><%= @review.description %><br>
-<%= "Marathon Rating: " %><%= @review.rating %><br>
+<br>
+<h3 class="text-center">
+<%= @review.review_race_name %> Review<br>
+</h3>
 
+<h5 class="text-center">
+<%= "Title: " %><%= @review.title %><br>
+<%= "Content: " %><%= @review.description %><br>
+<%= "Rating: " %><%= @review.rating %><br>
+<br>
 <% if current_user.id == @review.user_id %>
-    <%= link_to "Edit Review", edit_run_review_path(@run, @review) %>
-    <%= link_to "Delete Review", run_review_path(@run, @review), method: :delete %>
+    <button type="button" class="btn btn-outline-primary">
+        <%= link_to "Edit Review", edit_run_review_path(@run, @review) %>
+    </button>
+    <button type="button" class="btn btn-outline-primary">
+        <%= link_to "Delete Review", run_review_path(@run, @review), method: :delete %>
+    </button>
 <% end %>
+</h5>

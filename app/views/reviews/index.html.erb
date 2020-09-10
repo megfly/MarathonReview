@@ -1,9 +1,11 @@
 <br>
-<h3 class="text-center">Reviews: </h3>
+<h3 class="text-center">Reviews:</h3>
+<br>
+<h5 class="text-center">
 <% @reviews.highest_rating.each do |r| %>
     <%= link_to r.title, run_review_path(r.run_id, r) %> <br>
-    Marathon: <%= r.review_race_name %><br>
-    Content: <%= r.description %><br>
+    <%= r.review_race_name %><br>
     By: <%= r.user.email %><br>
     Rating: <%= r.rating %><br><br>
 <% end %>
+</h5>
