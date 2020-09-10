@@ -20,7 +20,7 @@ Rails.application.routes.draw do
   resources :reviews
 
   resources :users 
-  #gem or api, 3rd party login, bootstrap, submit a photo review a run, nested form run&review at same time
+  #gem or api, submit a photo review a run, nested form run&review at same time
   
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
