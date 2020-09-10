@@ -17,10 +17,10 @@ class SessionsController < ApplicationController
  
             if @user && @user.authenticate(params[:user][:password])
                 session[:user_id] = @user.id #save the user id inside browser cookies and login
-                flash[:error] = "Login successful!"
+                flash[:alert] = "Login successful!"
                 redirect_to user_path(@user)
             else 
-                flash[:error] = "Please try again!"
+                flash[:alert] = "Please try again!"
                 redirect_to '/login'
             end 
     end 
@@ -35,7 +35,7 @@ class SessionsController < ApplicationController
                     session[:user_id] = @user.id 
                     redirect_to user_path(@user)
                 else 
-                    flash[:error] = "Please try again!"
+                    flash[:alert] = "Please try again!"
                     redirect_to '/login'
                 end 
             end 
