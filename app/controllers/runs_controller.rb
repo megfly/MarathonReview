@@ -12,7 +12,7 @@ class RunsController < ApplicationController
     def new
         params[:user_id] && @user = User.find_by_id(params[:user_id])
         @run = Run.new
-        @run.build
+        #@run.reviews.build
     end 
 
     def create
