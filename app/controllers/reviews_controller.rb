@@ -22,6 +22,7 @@ class ReviewsController < ApplicationController
         @review.user_id = current_user.id 
         @review.run_id = params[:run_id]
         if @review.save 
+            flash[:success] = "Successfully created!"
             redirect_to run_review_path(@review.run_id, @review)
         else 
             render :new
@@ -33,6 +34,7 @@ class ReviewsController < ApplicationController
 
     def update 
         if @review.update(review_params)
+            flash[:success] = "Successfully updated!"
             redirect_to run_review_path(@review.run_id, @review)
         else
             redirect_to '/'
