@@ -12,12 +12,13 @@ class RunsController < ApplicationController
     def new
         params[:user_id] && @user = User.find_by_id(params[:user_id])
         @run = Run.new
-        @run.reviews.build
+        @run.build
     end 
 
     def create
         @run = current_user.runs.build(run_params)
         @run.user_id = current_user.id 
+
         if @run.save 
             flash[:success] = "Successfully created!"
             redirect_to run_path(@run)
@@ -31,6 +32,8 @@ class RunsController < ApplicationController
     end
 
     def update 
+        @user = User.find_by_id(params[:id])
+       
         if @run.update(run_params)
             flash[:success] = "Successfully updated!"
             redirect_to run_path 
@@ -48,14 +51,14 @@ class RunsController < ApplicationController
     private
 
     def run_params
-        params.require(:run).permit(:run_race_name, :terrain, :location_city, :location_state, :month, :user_id,
-        reviews_attributes: [
-            :title, 
-            :review_race_name, 
-            :description, 
-            :rating
-            ]
-        )
+        params.require(:run).permit(:run_race_name, :terrain, :location_city, :location_state, :month, :user_id)
+        # reviews_attributes: [
+        #     :title, 
+        #     :review_race_name, 
+        #     :description, 
+        #     :rating,
+        #     ]
+        # )
     end 
 
     def set_run
