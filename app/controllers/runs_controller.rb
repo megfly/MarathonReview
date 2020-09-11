@@ -19,6 +19,7 @@ class RunsController < ApplicationController
         @run = current_user.runs.build(run_params)
         @run.user_id = current_user.id 
         if @run.save 
+            flash[:success] = "Successfully created!"
             redirect_to run_path(@run)
         else 
             render :new 
@@ -30,8 +31,12 @@ class RunsController < ApplicationController
     end
 
     def update 
-        @run.update(run_params)
-        redirect_to run_path 
+        if @run.update(run_params)
+            flash[:success] = "Successfully updated!"
+            redirect_to run_path 
+        else 
+            render :edit 
+        end 
     end 
 
     def destroy
@@ -45,7 +50,6 @@ class RunsController < ApplicationController
     def run_params
         params.require(:run).permit(:run_race_name, :terrain, :location_city, :location_state, :month, :user_id,
         reviews_attributes: [
-            :run_id, :user_id, 
             :title, 
             :review_race_name, 
             :description, 
