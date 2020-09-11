@@ -5,4 +5,5 @@ class Run < ApplicationRecord
     accepts_nested_attributes_for :reviews
 
     validates :run_race_name, :terrain, :location_city, :location_state, :month, presence: true 
+    validates :run_race_name, uniqueness: true 
 end
