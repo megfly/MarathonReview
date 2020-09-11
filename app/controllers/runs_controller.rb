@@ -12,6 +12,7 @@ class RunsController < ApplicationController
     def new
         params[:user_id] && @user = User.find_by_id(params[:user_id])
         @run = Run.new
+        @run.reviews.build
     end 
 
     def create
@@ -42,7 +43,15 @@ class RunsController < ApplicationController
     private
 
     def run_params
-        params.require(:run).permit(:run_race_name, :terrain, :location_city, :location_state, :month, :user_id)
+        params.require(:run).permit(:run_race_name, :terrain, :location_city, :location_state, :month, :user_id,
+        reviews_attributes: [
+            :run_id, :user_id, 
+            :title, 
+            :review_race_name, 
+            :description, 
+            :rating
+            ]
+        )
     end 
 
     def set_run
