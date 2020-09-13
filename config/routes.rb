@@ -9,17 +9,17 @@ Rails.application.routes.draw do
   #logging in
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
-  delete '/logout', to: 'sessions#destroy'
+  delete '/logout', to: 'sessions#destroy' 
 
   #fb omniauth logging in
   get '/auth/facebook/callback' => 'sessions#omniauth'
 
   resources :runs do 
-    resources :reviews
+    resources :reviews, only: [:show, :new, :create, :edit, :update, :destroy]
   end 
-  resources :reviews
+  resources :reviews, only: [:index]
 
-  resources :users 
+  resources :users, only: [:new, :create, :show]
   
   #gem or api, submit a photo review a run, nested form run&review at same time
   #would like to collection select for terrain, and also put limit on rating numbers
