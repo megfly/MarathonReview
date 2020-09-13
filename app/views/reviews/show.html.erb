@@ -7,6 +7,7 @@
 <%= "Title: " %><%= @review.title %><br>
 <%= "Content: " %><%= @review.description %><br>
 <%= "Rating: " %><%= @review.rating %><br>
+By: <%= @review.user.email %>
 <br>
 <% if current_user.id == @review.user_id %>
     <button type="button" class="btn btn-outline-primary">
