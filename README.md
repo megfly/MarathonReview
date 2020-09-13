@@ -1,24 +1,9 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Overview: This app is a Ruby-on-Rails app. Marathon Review's app is an app for runner's to review Marathons! Users can add marathons and review their marathons and other marathons other users have added. The Marathon forms include items such as race name, location, terrain and month of race. The review forms include items such as title, description and rating.
 
-Things you may want to cover:
+After installing, run rails s to run locally.
 
-* Ruby version
+Contributor's Guide: https://www.contributor-covenant.org/
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+License: https://opensource.org/licenses/MIT
