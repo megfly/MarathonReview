@@ -3,7 +3,13 @@ class RunsController < ApplicationController
     before_action :set_run, only: [:show, :edit, :update, :destroy]
     
     def index 
+        if params[:user_id]
+            
+            @runs = Run.where({ user_id: params[:user_id]})
+        #if there is a user_id set the view to show all of that users runs 
+        else 
         @runs = Run.all
+        end 
     end 
 
     def show
