@@ -19,7 +19,11 @@ Rails.application.routes.draw do
   end 
   resources :reviews, only: [:index]
 
-  resources :users, only: [:new, :create, :show]
+  resources :users, only: [:new, :create, :show] do 
+    resources :runs, only: [:index]
+  end 
+
+
   
   #gem or api, submit a photo review a run, nested form run&review at same time
   #would like to collection select for terrain, and also put limit on rating numbers
