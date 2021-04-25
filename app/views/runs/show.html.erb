@@ -1,7 +1,7 @@
 <%= render partial: "layouts/errors", locals: {object: @run} %>
     <br>
-<h3 class="text-center">
-    <div> <%= @run.run_race_name %><div></h3>
+<h2 class="text-center">
+    <div> <%= @run.run_race_name %><div></h2>
 <h5 class="text-center">
     <div> Race Terrain: <%= @run.terrain %><div>
     <div> Race City: <%= @run.location_city %><div>
@@ -9,13 +9,14 @@
     <div> Race Month: <%= @run.month %><div>
     <div> by: <%= @run.user.email %>
 </h5>
-    <br>
+    <br> </br>
 <h4 class="text-center"> Marathon Reviews: </h4>
+    <br></br>
     <div>
 <h5 class="text-center">
 <% @run.reviews.each do |review| %>
     <%= link_to "#{review.review_race_name}", run_review_path(@run, review) %><div>
-    Rated <%= "#{review.rating}" %><div>
+    Rated <%= "#{review.rating}" %><div> <br></br>
     
 <% end %>
     <br>
