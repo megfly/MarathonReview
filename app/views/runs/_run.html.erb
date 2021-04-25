@@ -11,7 +11,7 @@
     <div class="field form-group">
         <%= f.label :terrain, "Marathon Terrain: ", class: 'col-sm-2 control-label' %>
         <div class="col-sm-6">
-            <%= f.text_field :terrain, class: 'form-control' %>
+            <%= f.select :terrain, ['road', 'beach'], class: 'form-control' %>
         </div>
     </div>
 
